@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f0e6;
+  --ink: #111111;
+  --yellow: #ffe500;
+  --lime: #b8ff3c;
+  --cyan: #3dfff3;
+  --pink: #ff3d8a;
+  --orange: #ff8a3d;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-brutal-yellow: var(--yellow);
+  --color-brutal-lime: var(--lime);
+  --color-brutal-cyan: var(--cyan);
+  --color-brutal-pink: var(--pink);
+  --color-brutal-orange: var(--orange);
+  --font-sans: var(--font-space-grotesk);
+  --font-display: var(--font-archivo);
+  --font-mono: var(--font-ibm);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(17, 17, 17, 0.04) 32px
+    ),
+    var(--paper);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) rotate(-1deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.45s ease both;
+}
+
+.animate-bar {
+  transform-origin: left center;
+  animation: bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-toast {
+  animation: toast-in 0.35s ease both;
+}
+
+.brutal-card {
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 0 var(--ink);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.brutal-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 0 var(--ink);
+}
+
+.brutal-btn {
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 0 var(--ink);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 var(--ink);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 var(--ink);
+}
+
+.brutal-input {
+  width: 100%;
+  border: 3px solid var(--ink);
+  background: #fff;
+  padding: 0.7rem 0.85rem;
+  font-weight: 600;
+  outline: none;
+  transition:
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.brutal-input:focus {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--ink);
+}
+
+.hatched {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(17, 17, 17, 0.08) 6px,
+    rgba(17, 17, 17, 0.08) 8px
+  );
+}

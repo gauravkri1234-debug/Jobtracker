@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  Applied
+  Shortlisted
+  Assessment
+  Interview
+  Offer
+  Rejected
+}
+
+enum JobType {
+  FullTime
+  Internship
+  PartTime
+  Contract
+}
+
+enum InterviewType {
+  Technical
+  HR
+  Managerial
+  Online
+  Offline
+}
+
+model Application {
+  id              String         @id @default(cuid())
+  companyName     String
+  jobRole         String
+  location        String?
+  jobType         JobType?
+  ctc             Float?
+  applicationDate DateTime
+  status          Status
+  jobUrl          String?
+  notes           String?
+  interviewDate   DateTime?
+  interviewRound  String?
+  interviewType   InterviewType?
+  interviewNotes  String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
